@@ -1,0 +1,17 @@
+{
+  "intent_recognition": {
+    "provider": "groq",
+    "model": "llama-3.3-70b-versatile",
+    "temperature": 0
+  },
+  "reasoning": {
+    "provider": "groq",
+    "model": "llama-3.3-70b-versatile",
+    "temperature": 0
+  },
+  "task_decomposition": {
+    "provider": "groq",
+    "model": "llama-3.3-70b-versatile",
+    "temperature": 0
+  }
+}
