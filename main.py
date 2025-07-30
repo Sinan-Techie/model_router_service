@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from utils import load_model_config, get_llm_instance
+from utils import load_model_config, get_llm_instance, extract_json
 import uvicorn
 app = FastAPI()
 model_map = load_model_config()
@@ -21,9 +21,12 @@ async def invoke_model(request: InferenceRequest):
 
     llm = get_llm_instance(config)
     try:
-        output = await llm.ainvoke(request.prompt)
-        print(f"Model response: {output.content.strip()}")
-        return {"response": output.content.strip()}
+        raw_output = await llm.ainvoke(request.prompt)
+        print(f"Raw model output: {raw_output}")
+        output= extract_json(raw_output.content)
+        print(f"Extracted JSON: {output}")
+        print(f"Model response: {output}")
+        return {"response": output}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
