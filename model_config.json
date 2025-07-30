@@ -1,15 +1,20 @@
 {
   "intent_recognition": {
-    "provider": "groq",
-    "model": "llama-3.3-70b-versatile",
+    "provider": "gemini",
+    "model": "gemini-2.5-pro",
     "temperature": 0
   },
-  "reasoning": {
+    "reasoning": {
     "provider": "groq",
     "model": "llama-3.3-70b-versatile",
-    "temperature": 0
+    "temperature":0
   },
   "task_decomposition": {
+    "provider": "groq",
+    "model": "llama-3.3-70b-versatile",
+    "temperature": 0
+  },
+  "core": {
     "provider": "groq",
     "model": "llama-3.3-70b-versatile",
     "temperature": 0
