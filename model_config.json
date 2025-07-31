@@ -10,13 +10,13 @@
     "temperature":0
   },
   "task_decomposition": {
-    "provider": "anthropic",
-    "model": "claude-3-5-sonnet-20241022",
+    "provider": "gemini",
+    "model": "gemini-2.5-pro",
     "temperature": 0
   },
   "core": {
-    "provider": "huggingface",
-    "model": "mistralai/Mistral-7B-Instruct-v0.2",
+    "provider": "groq",
+    "model": "llama-3.3-70b-versatile",
     "temperature": 0
   }
 }
