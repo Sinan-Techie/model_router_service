@@ -6,8 +6,14 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_anthropic import ChatAnthropic
 from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
 import re
+import logging
 from dotenv import load_dotenv
+from logging_config import setup_logging
 load_dotenv()
+
+setup_logging(log_file='model_selector.log')
+logger = logging.getLogger(__name__)
+
 
 def load_model_config(path='model_config.json'):
     with open(path, 'r') as f:
@@ -52,8 +58,10 @@ def get_llm_instance(config):
             )
             return ChatHuggingFace(llm=llm)
         else:
+            
             raise ValueError(f"Unsupported provider: {provider}")
         
     except Exception as e:
-        print(f"[LLM ERROR] Failed to initialize LLM ({provider}-{model}): {e}")
+        logger.error(f"[LLM ERROR] Failed to initialize LLM ({provider}-{model}): {e}")
+        # print(f"[LLM ERROR] Failed to initialize LLM ({provider}-{model}): {e}")
         raise
